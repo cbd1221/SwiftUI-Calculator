@@ -37,12 +37,12 @@ struct NumberGridView: View {
             LazyVGrid(columns: columns, spacing: 40) {
                 ForEach(numbers, id: \.self) { num in
                     Button("\(num)") {
-                        buttonPressed(cell: num)
+                        buttonPressed(buttonText: num)
                     }
                 }
-                ForEach(operators, id: \.self) { cell in
-                    Button(cell) {
-                        buttonPressed(cell: cell)
+                ForEach(operators, id: \.self) { buttonText in
+                    Button(buttonText) {
+                        buttonPressed(buttonText: buttonText)
                     }
                 }
             }.buttonStyle(.bordered)
@@ -52,8 +52,8 @@ struct NumberGridView: View {
         }
     }
     
-    func buttonPressed(cell: String) {
-        switch cell {
+    func buttonPressed(buttonText: String) {
+        switch buttonText {
         case "=":
             if let result = calculate() {
                 expression = ""
@@ -69,22 +69,22 @@ struct NumberGridView: View {
             expression = String(format: "%.2f", literal)
             
         case "x", "/", "+", "-":
-            addOperation(cell)
+            addOperation(buttonText)
         case "Clear":
             clear()
         default:
-            expression += cell
+            expression += buttonText
         }
     }
     
     
-    func addOperation(_ cell: String) {
+    func addOperation(_ operand: String) {
         if !expression.isEmpty {
             let last = String(expression.last!)
             if (operators.contains(last) || last == "-") {
                 expression.removeLast()
             }
-            expression += cell
+            expression += operand
             hasOperator = true
         }
     }
