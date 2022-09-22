@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State var expression = ""
     var body: some View {
         VStack {
-            ExpressionView(content: expression)
             NumberGridView()
         }
     }

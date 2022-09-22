@@ -22,8 +22,18 @@ struct NumberGridView: View {
     
     var body: some View {
         VStack {
-            ExpressionView(content: results)
-            ExpressionView(content: expression)
+            HStack {
+                Text("Results:")
+                Spacer()
+                ExpressionView(content: results)
+            }
+            .padding()
+            HStack {
+                Text("Expression: ")
+                ExpressionView(content: expression)
+                Spacer()
+            }
+            .padding()
             LazyVGrid(columns: columns, spacing: 40) {
                 ForEach(numbers, id: \.self) { num in
                     Button("\(num)") {
@@ -50,10 +60,13 @@ struct NumberGridView: View {
                 results = result
             }
         case "%":
+            if expression.isEmpty {
+                return
+            }
             let percent = NSExpression(format: expression)
             var literal = percent.expressionValue(with: nil, context: nil) as! Double
             literal *= 0.01
-            expression = String(literal)
+            expression = String(format: "%.2f", literal)
             
         case "x", "/", "+", "-":
             addOperation(cell)
