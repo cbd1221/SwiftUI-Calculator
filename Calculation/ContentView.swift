@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var expression = ""
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            ExpressionView(content: expression)
+            NumberGridView()
+        }
     }
 }
 
