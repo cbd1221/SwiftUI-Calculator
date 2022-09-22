@@ -14,12 +14,7 @@ struct NumberGridView: View {
     @State var expression = ""
     @State var results = ""
     @State var hasOperator = false
-    
-    func clear() {
-        expression = ""
-        results = ""
-    }
-    
+        
     var body: some View {
         VStack {
             HStack {
@@ -30,8 +25,8 @@ struct NumberGridView: View {
             .padding()
             HStack {
                 Text("Expression: ")
-                ExpressionView(content: expression)
                 Spacer()
+                ExpressionView(content: expression)
             }
             .padding()
             LazyVGrid(columns: columns, spacing: 40) {
@@ -67,7 +62,6 @@ struct NumberGridView: View {
             var literal = percent.expressionValue(with: nil, context: nil) as! Double
             literal *= 0.01
             expression = String(format: "%.2f", literal)
-            
         case "x", "/", "+", "-":
             addOperation(buttonText)
         case "Clear":
@@ -76,7 +70,7 @@ struct NumberGridView: View {
             expression += buttonText
         }
     }
-    
+//MARK: Struct Functions
     
     func addOperation(_ operand: String) {
         if !expression.isEmpty {
@@ -109,12 +103,14 @@ struct NumberGridView: View {
         return String(format: "%.2f", value)
     }
     
+    func clear() {
+        expression = ""
+        results = ""
+    }
 }
-
+    
 struct NumberGridView_Previews: PreviewProvider {
     static var previews: some View {
         NumberGridView(expression: "", results: "")
     }
 }
-
-
