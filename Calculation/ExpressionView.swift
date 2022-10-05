@@ -13,7 +13,7 @@ struct ExpressionView: View {
         Text(content)
             .font(.title2)
             .multilineTextAlignment(.trailing)
-            .lineLimit(1)
+            .lineLimit(3)
             .minimumScaleFactor(0.2)
     }
 }

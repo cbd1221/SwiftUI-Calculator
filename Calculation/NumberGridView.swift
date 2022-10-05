@@ -88,7 +88,8 @@ struct NumberGridView: View {
             var calculation = expression.replacingOccurrences(of: "%", with: " * 0.01")
             calculation = expression.replacingOccurrences(of: "x", with: "*")
             let workingCalculation = NSExpression(format: calculation)
-            let results = workingCalculation.expressionValue(with: nil, context: nil) as! Double
+           //if the numbers are too large, this will throw a fatal error: "unable to bridge number to Double"
+			let results = workingCalculation.expressionValue(with: nil, context: nil) as! Double
             let finalResults = formatExpression(results)
             hasOperator = false
             return String(finalResults)
@@ -107,6 +108,7 @@ struct NumberGridView: View {
         expression = ""
         results = ""
     }
+	
 }
     
 struct NumberGridView_Previews: PreviewProvider {
@@ -114,3 +116,5 @@ struct NumberGridView_Previews: PreviewProvider {
         NumberGridView(expression: "", results: "")
     }
 }
+
+
