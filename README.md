@@ -1,11 +1,13 @@
 # SwiftUI-Calculator
 A basic, *functional calculator built using SwiftUI - lots of room for expansion and improvement
 
-//
-I am currently altering all of the code here to use a more convenient method of converting strings/characters
-into numbers and back again. I am also switching this to use a cleaner MVC structure because as it is I can't 
-stand looking at it
-//
+
+- I am currently altering all of the code here to use a more convenient method of converting strings/characters
+into numbers and back again. 
+- I am also switching this to use a cleaner MVC structure because as it is I can't 
+stand looking at it  
+
+
 
 
 There are lots of documents available detailing how to clone the UI of Apple's built-in calculator.
