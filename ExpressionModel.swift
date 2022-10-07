@@ -164,7 +164,6 @@ class ExpressionModel: ObservableObject {
 			rhs = nil
 			rhString = ""
 			hasOperand = false
-			
 		default:
 			return
 		}
