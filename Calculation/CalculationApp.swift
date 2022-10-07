@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct CalculationApp: App {
+	@State var expressionModel = ExpressionModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+				.environmentObject(expressionModel)
         }
     }
 }

@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ExpressionView: View {
-    var content: String
+	@EnvironmentObject var expressionModel: ExpressionModel
     var body: some View {
-        Text(content)
+		Text(expressionModel.userinput)
             .font(.title2)
             .multilineTextAlignment(.trailing)
             .lineLimit(3)
             .minimumScaleFactor(0.2)
+		
     }
 }
 
 struct ExpressionView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpressionView(content: "E = MC 2")
+        ExpressionView()
     }
 }
