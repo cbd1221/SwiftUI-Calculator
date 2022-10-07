@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+	@EnvironmentObject var expressionModel: ExpressionModel
     var body: some View {
         VStack {
             NumberGridView()
+				.environmentObject(expressionModel)
         }
     }
 }
