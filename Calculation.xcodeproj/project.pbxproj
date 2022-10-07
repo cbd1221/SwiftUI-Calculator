@@ -24,7 +24,7 @@
 		3B9BAFA828D96BEE004CFE7D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3B9BAFB128D96C8F004CFE7D /* NumberGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberGridView.swift; sourceTree = "<group>"; };
 		3B9BAFB328DBF43F004CFE7D /* ExpressionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionView.swift; sourceTree = "<group>"; };
-		3BD3768428EE9CBD00260B3B /* ExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionModel.swift; sourceTree = "<group>"; };
+		3BD3768428EE9CBD00260B3B /* ExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpressionModel.swift; path = ../ExpressionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +41,7 @@
 		3B9BAF9528D96BEC004CFE7D = {
 			isa = PBXGroup;
 			children = (
-				3BD3768428EE9CBD00260B3B /* ExpressionModel.swift */,
+				3B9BAFA128D96BEC004CFE7D /* CalculationApp.swift */,
 				3B9BAFA028D96BEC004CFE7D /* Calculation */,
 				3B9BAF9F28D96BEC004CFE7D /* Products */,
 			);
@@ -58,9 +58,9 @@
 		3B9BAFA028D96BEC004CFE7D /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
-				3B9BAFA128D96BEC004CFE7D /* CalculationApp.swift */,
 				3B9BAFA328D96BEC004CFE7D /* ContentView.swift */,
 				3B9BAFB128D96C8F004CFE7D /* NumberGridView.swift */,
+				3BD3768428EE9CBD00260B3B /* ExpressionModel.swift */,
 				3B9BAFB328DBF43F004CFE7D /* ExpressionView.swift */,
 				3B9BAFA528D96BEE004CFE7D /* Assets.xcassets */,
 				3B9BAFA728D96BEE004CFE7D /* Preview Content */,
