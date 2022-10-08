@@ -16,8 +16,8 @@ class ExpressionModel: ObservableObject {
 	@Published var hasOperand: Bool = false
 	@Published var result: String = ""
 	@Published var rhString: String = ""
-	
-	
+	@Published var clearWasTapped: Bool = false
+
 	enum Operand: Character, RawRepresentable {
 		case mult = "*"
 		case div = "/"
@@ -30,6 +30,16 @@ class ExpressionModel: ObservableObject {
 	
 	public func addCharacter(char: String) {
 		switch char {
+		case ".":
+			if hasOperand {
+				userinput = "0."
+				rhString += "0."
+				hasOperand = false
+			}
+			if userinput.isEmpty {
+				userinput = "0."
+			}
+			userinput += "."
 		case "0":
 			if hasOperand {
 				userinput = ""
@@ -104,46 +114,77 @@ class ExpressionModel: ObservableObject {
 			return
 		}
 	}
+
+	func clearTapped() {
+		if clearWasTapped {
+			allClear()
+			clearWasTapped = false
+			return
+		}
+		userinput = ""
+		clearWasTapped = true
+	}
 	
-	func clear() {
-		self.userinput = ""
-		self.lhs = nil
-		self.lhString = ""
-		self.rhs = nil
-		self.operand = .none
-		self.hasOperand = false
-		self.result = ""
-		self.rhString = ""
+	func allClear() {
+		userinput = ""
+		lhs = nil
+		lhString = ""
+		rhs = nil
+		operand = .none
+		hasOperand = false
+		result = ""
+		rhString = ""
+		clearWasTapped = false
 	}
 
 	
 	func addOperator(char: String) {
 		switch char {
 		case "x":
+			if hasOperand {
+				operand = .mult
+				userinput = "X"
+			}
 			operand = .mult
 			lhs = Double(userinput)
 			lhString = userinput
 			userinput = "X"
 			hasOperand = true
 		case "/":
+			if hasOperand {
+				operand = .div
+				userinput = "/"
+			}
 			operand = .div
 			lhs = Double(userinput)
 			lhString = userinput
 			userinput = "/"
 			hasOperand = true
 		case "%":
+			if hasOperand {
+				operand = .per
+				userinput = "%"
+			}
 			operand = .per
 			lhs = Double(userinput)
 			lhString = userinput
 			userinput = "%"
 			hasOperand = true
 		case "+":
+			if hasOperand {
+				operand = .plus
+				userinput = "+"
+			}
 			operand = .plus
 			lhs = Double(userinput)
 			lhString = userinput
 			userinput = "+"
 			hasOperand = true
 		case "-":
+			if hasOperand {
+				operand = .min
+				userinput = "-"
+			}
 			operand = .min
 			lhs = Double(userinput)
 			lhString = userinput
@@ -167,6 +208,7 @@ class ExpressionModel: ObservableObject {
 		default:
 			return
 		}
+		clearWasTapped = false
 	}
 	
 	func calculate(_ operand: Operand) -> Double? {
